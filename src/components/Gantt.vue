@@ -40,8 +40,8 @@ export default {
         this.$emit('task-updated', id, 'updated', task)
       })
 
-      gantt.attachEvent('onAfterTaskDelete', (id) => {
-        this.$emit('task-updated', id, 'deleted')
+      gantt.attachEvent('onAfterTaskDelete', (id, item) => {
+        this.$emit('task-updated', id, 'deleted', item)
         if(!gantt.getSelectedId()) {
           this.$emit('task-selected', null)
         }
@@ -58,6 +58,10 @@ export default {
       gantt.attachEvent('onAfterLinkDelete', (id, link) => {
         this.$emit('link-updated', id, 'deleted')
       })
+
+      gantt.attachEvent("onAfterTaskDelete", function(id,item){
+    //any custom logic here
+      });
       gantt.$_eventsInitialized = true;
     },
   },
@@ -65,11 +69,18 @@ export default {
   mounted () {
     this.$_initGanttEvents();
     gantt.init(this.$refs.gantt)
-    axios.get('/projects/gantt_chart/'+'84c59e3c15414c2c8f40aed923fb457e').then((res) => {
-          return res.data;
-        }).then((data) => {
+
+
+    let res={
+            result:1,
+            data:[
+                {id:1, text:"任务1", type:gantt.config.types.milestone,   start_date:1556519957000, end_date:1559111957000,open:true},
+                {id:2, text:"任务2", type:gantt.config.types.milestone,   start_date:1556519957000, end_date:1559111957000, parent:1},
+            ]
+    }
+
           let listData=[]
-          listData= data.data.map(item=>{
+          listData=res.data.map(item=>{
                   let cur={
                       id: item.id,
                       publicId:item.publicId,
@@ -86,7 +97,31 @@ export default {
           })
          this.tasks.data = listData
          gantt.parse(this.tasks)
-        })
+
+
+    // axios.get('/projects/gantt_chart/'+'84c59e3c15414c2c8f40aed923fb457e').then((res) => {
+    //       return res.data;
+    //     }).then((data) => {
+
+    //       let listData=[]
+    //       listData= data.data.map(item=>{
+    //               let cur={
+    //                   id: item.id,
+    //                   publicId:item.publicId,
+    //                   text: item.text,
+    //                   user: item.user,
+    //                   type: item.type,
+    //                   start_date: new Date(item.start_date),
+    //                   end_date: new Date(item.end_date),
+    //                   parent:item.parent,
+    //                   open:item.open ,       
+    //                   progress:1                 
+    //               }
+    //               return cur;
+    //       })
+    //      this.tasks.data = listData
+    //      gantt.parse(this.tasks)
+    //     })
   },
 
   created:function(){
@@ -106,7 +141,21 @@ export default {
             "星期六"],
             day_short:["日", "一", "二", "三", "四", "五", "六"]
         },
-        labels:{ }
+        labels:{
+          icon_save:"保存",
+          icon_cancel:"取消",
+          icon_details:"详情",
+          icon_edit:"Edit",
+          icon_delete:"册除",
+          section_description:"任务名称",
+          section_time:"任务时间",
+          minutes: "分",
+          hours: "小时",
+          days: "日",
+          weeks: "周",
+          months: "月",
+          years: "年"
+         }
     };
   }
 }
