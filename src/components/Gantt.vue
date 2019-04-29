@@ -69,20 +69,21 @@ export default {
           return res.data;
         }).then((data) => {
           let listData=[]
-       listData= data.data.map(item=>{
-              let cur={
-                  id: item.id,
-                  publicId:item.publicId,
-                  text: item.text,                   
-                  type: item.type,
-                  start_date: new Date(item.start_date),
-                  parent:item.parent,
-                  open:item.open,
-                  duration:1,
-                  progress:0.5                  
-              }
-              return cur;
-      })
+          listData= data.data.map(item=>{
+                  let cur={
+                      id: item.id,
+                      publicId:item.publicId,
+                      text: item.text,
+                      user: item.user,
+                      type: item.type,
+                      start_date: new Date(item.start_date),
+                      end_date: new Date(item.end_date),
+                      parent:item.parent,
+                      open:item.open ,       
+                      progress:1                 
+                  }
+                  return cur;
+          })
          this.tasks.data = listData
          gantt.parse(this.tasks)
         })
@@ -92,7 +93,7 @@ export default {
     gantt.config.columns = [
         {name:"text",       label:"任务名称",  width:"*", tree:true },
         {name:"start_date", label:"开始时间", align:"center", width:90 },
-        {name:"duration",   label:"结束时间",  align:"center" , width:90},
+        {name:"end_date",   label:"结束时间",  align:"center" , width:90},
          // {name:"add",        label:"",           width:44 }
       ];
      gantt.locale = {
