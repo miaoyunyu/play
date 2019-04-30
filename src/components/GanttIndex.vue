@@ -35,14 +35,14 @@ export default {
     selectTask (task) {
       this.selectedTask = task
     },
+
     //tasks
     logTaskUpdate (id, mode, task) {
-     // debugger
-    
+     debugger
       let text = (task && task.text ? ` (${task.text})`: '')
       let message = `Task ${mode}: ${id} ${text}` 
-     
     },
+    
     //link
     logLinkUpdate (id, mode, link) {
       let message = `Link ${mode}: ${id}`

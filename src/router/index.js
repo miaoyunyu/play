@@ -1,26 +1,34 @@
 import Vue from "vue";
 import Router from "vue-router";
-
-import index from './components/index.vue';
+import index from '../components/index.vue';
+import GanttIndex from '../components/GanttIndex.vue';
+import Gantt from '../components/Gantt.vue';
 
 
 Vue.use(Router);
 
 export default new Router({
-  mode: "history",
-  base: process.env.BASE_URL,
   routes: [
     {
-      path: "/",
-      name: "index",
-      meta: {
-        title: "首页"
-      },
+      path: '/',
+      component: GanttIndex
+    },
+    {
+      path: '/index',
       component: index
     },
-   
+    {
+      path: '/GanttIndex',
+      component: GanttIndex
+    },
+    {
+      path: '/Gantt',
+      component: Gantt
+    },
+    
   ]
 });
+
 
 
 

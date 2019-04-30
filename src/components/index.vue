@@ -1,7 +1,7 @@
 <template>
 
 
-  <div class="index" style="background:#fff000;width:1000px;height:100px;border:1px">
+  <div class="index" style="background:#fff000;width:100%;height:700px;border:1px">
       <li><router-link to="/GanttIndex">进入甘特图</router-link></li>
   </div>
 
@@ -30,6 +30,7 @@ export default {
 
 <style>
   html, body {
+    width: 100%;
     height: 100%;
     margin: 0;
     padding: 0;

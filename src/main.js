@@ -1,34 +1,33 @@
 import Vue from 'vue';
 import App from './App.vue';
+import router from './router/index.js'
 
-import Router from 'vue-router';
-import index from './components/index.vue';
-import GanttIndex from './components/GanttIndex.vue';
-
-
-// import routes from './router/index.js'
-// import VueRouter from 'vue-router'
-
-// Vue.use(VueRouter)
-// const router = new VueRouter({
-//   routes
+// 单页引router的方法
+// import Router from 'vue-router';
+// import index from './components/index.vue';
+// import GanttIndex from './components/GanttIndex.vue';
+// import Gantt from './components/Gantt.vue';
+// Vue.use(Router);
+// const router = new Router({
+//   routes: [
+//     {
+//       path: '/',
+//       component: GanttIndex
+//     },
+//     {
+//       path: '/index',
+//       component: index
+//     },
+//     {
+//       path: '/GanttIndex',
+//       component: GanttIndex
+//     },
+//     {
+//       path: '/Gantt',
+//       component: Gantt
+//     },
+//   ]
 // });
-
-Vue.use(Router);
-
-const router = new Router({
-  routes: [
-    {
-      path: '/',
-      component: index
-    },
-    {
-      path: '/GanttIndex',
-      component: GanttIndex
-    },
-    
-  ]
-});
 
 
 Vue.config.productionTip = false
