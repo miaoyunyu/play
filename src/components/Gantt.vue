@@ -4,8 +4,12 @@
 
 <script>
 import 'dhtmlx-gantt'
-import axios from 'axios';
-axios.defaults.baseURL='/api'
+
+import {initGantt} from '@/axios/api'
+
+// import axios from 'axios';
+// axios.defaults.baseURL='/api'
+
 export default {
   name: 'gantt',
   data () {
@@ -105,28 +109,50 @@ export default {
 
     //获取数据
     getData:function(){
-          axios.get('/projects/gantt_chart/'+'84c59e3c15414c2c8f40aed923fb457e').then((res) => {
-                    return res.data;
-                  }).then((data) => {
-                    let listData=[]
-                    listData= data.data.map(item=>{
-                            let cur={
-                                id: item.id,
-                                publicId:item.publicId,
-                                text: item.text,
-                                user: item.user,
-                                type: item.type,
-                                start_date: new Date(item.start_date),
-                                end_date: new Date(item.end_date+(24*60*60*1000-1000)),
-                                parent:item.parent,
-                                open:item.open ,       
-                                progress:0               
-                            }
-                            return cur;
+
+          initGantt('84c59e3c15414c2c8f40aed923fb457e').then(res => {
+                    console.log(res)
+                    let listData=res.data.map(item=>{
+                      let cur={
+                        id: item.id,
+                        publicId:item.publicId,
+                        text: item.text,
+                        user: item.user,
+                        type: item.type,
+                        start_date: new Date(item.start_date),
+                        end_date: new Date(item.end_date+(24*60*60*1000-1000)),
+                        parent:item.parent,
+                        open:item.open ,
+                        progress:0
+                      }
+                      return cur;
                     })
-                  this.tasks.data = listData
-                  gantt.parse(this.tasks);
-            })
+                    this.tasks.data = listData
+                    gantt.parse(this.tasks);
+                  })
+
+          // axios.get('/projects/gantt_chart/'+'84c59e3c15414c2c8f40aed923fb457e').then((res) => {
+          //           return res.data;
+          //         }).then((data) => {
+          //           let listData=[]
+          //           listData= data.data.map(item=>{
+          //                   let cur={
+          //                       id: item.id,
+          //                       publicId:item.publicId,
+          //                       text: item.text,
+          //                       user: item.user,
+          //                       type: item.type,
+          //                       start_date: new Date(item.start_date),
+          //                       end_date: new Date(item.end_date+(24*60*60*1000-1000)),
+          //                       parent:item.parent,
+          //                       open:item.open ,       
+          //                       progress:0               
+          //                   }
+          //                   return cur;
+          //           })
+          //         this.tasks.data = listData
+          //         gantt.parse(this.tasks);
+          //   })
     },
 
     //获取本地数据

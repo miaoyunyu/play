@@ -2,6 +2,19 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './router/index.js'
 
+import {
+  get,
+  post,
+  put,
+  deletes
+} from './axios/http'
+
+Vue.prototype.$get = get
+Vue.prototype.$post = post
+Vue.prototype.$put = put
+Vue.prototype.$delete = deletes
+
+
 // 单页引router的方法
 // import Router from 'vue-router';
 // import index from './components/index.vue';
@@ -36,3 +49,4 @@ new Vue({
   router,
   render: h => h(App),
 }).$mount('#app')
+
