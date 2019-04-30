@@ -8,10 +8,11 @@ import Gantt from '../components/Gantt.vue';
 Vue.use(Router);
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
-      component: GanttIndex
+      component: index
     },
     {
       path: '/index',
@@ -25,7 +26,6 @@ export default new Router({
       path: '/Gantt',
       component: Gantt
     },
-    
   ]
 });
 
