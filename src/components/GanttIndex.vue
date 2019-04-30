@@ -15,8 +15,7 @@ import Gantt from '@/components/Gantt.vue'
 import { debug } from 'util';
 import { constants } from 'crypto';
 
-import axios from 'axios';
-axios.defaults.baseURL='/api'
+
 
 export default {
   name: 'GanttIndex',

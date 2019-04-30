@@ -135,7 +135,7 @@ export default {
 
     //获取本地数据
     getDataLocality:function() {
-       axios.get('http://localhost:8080/gantt.json').then((res) => {
+       axios.get('http://localhost:8080/data/gantt.json').then((res) => {
                     return res;
                   }).then((data) => {
                     let listData=[]
