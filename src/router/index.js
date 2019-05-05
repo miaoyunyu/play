@@ -2,6 +2,7 @@ import Vue from "vue";
 import Router from "vue-router";
 import index from '../components/index.vue';
 import GanttIndex from '../components/GanttIndex.vue';
+import servoffice from '../components/servoffice/servoffice.vue'
 
 
 Vue.use(Router);
@@ -21,6 +22,10 @@ export default new Router({
       path: '/GanttIndex',
       component: GanttIndex
     },
+    {
+      path:'/servoffice',
+      component:servoffice
+    }
    
   ]
 });
