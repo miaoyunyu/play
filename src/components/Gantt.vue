@@ -10,7 +10,7 @@ import 'dhtmlx-gantt'
 
 // 本地请求
 import axios from 'axios';
-axios.defaults.baseURL='http:local'
+ axios.defaults.baseURL='http:local'
 
 export default {
   name: 'gantt',
@@ -135,9 +135,17 @@ export default {
 
     //获取本地数据
     getDataLocality:function() {
+
+
+       
+
+
        axios.get('http://localhost:8080/data/gantt.json').then((res) => {
-                    return res;
+                  
+                    return res.data;
                   }).then((data) => {
+                    console.log(data)
+                    
                     let listData=[]
                     listData= data.data.map(item=>{
                             let cur={

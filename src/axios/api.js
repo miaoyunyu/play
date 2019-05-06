@@ -1,4 +1,4 @@
-import fetch from './fetch' // 引用fetch.js
+import fetch from './http.js' // 引用fetch.js
 
 
 // 甘特图初始化
