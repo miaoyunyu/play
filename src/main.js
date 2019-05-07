@@ -1,6 +1,9 @@
 import Vue from 'vue';
 import App from './App.vue';
 import router from './router/index.js'
+import store from './store/index.js'
+
+
 
 import {
   get,
@@ -13,6 +16,16 @@ Vue.prototype.$get = get
 Vue.prototype.$post = post
 Vue.prototype.$put = put
 Vue.prototype.$delete = deletes
+
+
+Vue.config.productionTip = false
+
+new Vue({
+  router,
+  store,
+  render: h => h(App),
+}).$mount('#app')
+
 
 
 // 单页引router的方法
@@ -42,11 +55,21 @@ Vue.prototype.$delete = deletes
 //   ]
 // });
 
+//单页引vuex的方法
 
-Vue.config.productionTip = false
+// import state from './store/modules/state.js'
 
-new Vue({
-  router,
-  render: h => h(App),
-}).$mount('#app')
+// import Vuex from 'vuex'
+//   Vue.use(Vuex)
+
+//   const store=new Vuex.Store({
+//     state
+//   })
+// export default store
+//state.js
+// let state = {
+//   count: 1
+// }
+// export default state
+
 

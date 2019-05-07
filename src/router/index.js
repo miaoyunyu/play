@@ -4,6 +4,7 @@ import index from '../components/index.vue';
 import GanttIndex from '../components/GanttIndex.vue';
 import servoffice from '../components/servoffice/servoffice.vue'
 import promise from '../components/promise.vue'
+import vuexIndex from '../components/vuexIndex.vue'
 
 
 Vue.use(Router);
@@ -30,7 +31,12 @@ export default new Router({
     {
       path:'/promise',
       component:promise
+    },
+    {
+      path:'/vuexIndex',
+      component:vuexIndex
     }
+   
    
   ]
 });

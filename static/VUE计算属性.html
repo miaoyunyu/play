@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/vue/2.1.3/vue.js"></script>
+</head>
+<body>
+
+<div id="demo">
+    <div id="app1">{{ message}}</div>
+    <!--执行在computed里-->
+    <div id="app2">{{ reversedMessage}}</div>
+    <!--执行在methods    要写（）-->
+    <div>{{reverseTitle()}}</div>
+
+</div>
+
+<script type="text/javascript">
+
+    var app = new Vue({
+        el: '#demo',
+        data: {
+            message: 'Hello',
+            title: '2hello'
+        },
+        methods: {
+            //用这个方法要写（），所以可以传参
+            reverseTitle: function () {
+                return this.title.split('')
+            }
+        },
+        computed: {
+            //当计算属性所依赖的数据发生改变时,才会重新触发计算属性方法执行
+            reversedMessage: function () {
+                return this.message.split('').reverse().join('')
+            },
+            // test:{
+            //     get: function () {
+            //         return this.firstName + " " + this.lastName;
+            //     },
+            //    //正常不用写 SET  直接默认就可以
+            //     set: function (newVal){
+            //         var name = newVal.split(' ');
+            //         this.firstName = name[0];
+            //         this.lastName = name[1];
+            //     }
+            // }
+        }
+    })
+</script>
+</body>
+

@@ -3,6 +3,7 @@
       <li><router-link to="/GanttIndex">进入甘特图</router-link></li>
       <li><router-link to="/servoffice">servoffice</router-link></li>
       <li><router-link to="/promise">promise</router-link></li>
+      <li><router-link to="/vuexIndex">vuex</router-link></li>
   </div>
 </template>
 
