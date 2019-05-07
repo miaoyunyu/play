@@ -4,6 +4,25 @@ import router from './router/index.js'
 import store from './store/index.js'
 
 
+// import state from './store/modules/state.js'
+// import * as mutation from './store/modules/mutation.js'
+
+// import Vuex from 'vuex'
+//   Vue.use(Vuex)
+
+//   const store=new Vuex.Store({
+//     state,
+//     mutations: {
+//       increment (state) {
+//         state.count++
+//       },
+//       decrement (state){
+//         state.count--
+//       }
+//     }
+//   })
+// export default store
+
 
 import {
   get,

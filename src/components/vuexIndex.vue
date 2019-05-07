@@ -1,12 +1,14 @@
 <template>
   <div class="wrapper">
-      进入vuex
-     {{count}}
+      进入vuex<br/>
+      <button @click="add">-</button>
+        {{count}}{{date}}
+      <button @click="reduce">+</button>
   </div>
 </template>
 
 <script>
-
+import { mapState, mapActions} from 'vuex'
 
 export default {
   components:{},
@@ -17,15 +19,26 @@ export default {
   },
   watch:{},
   computed:{
-      count () {
-      return this.$store.state.count
-     }
+      ...mapState('company', ['count','date']),
   },
-  methods:{},
+  methods:{
+      ...mapActions("company", ["initCompany"]),
+      add:function(){
+          
+         this.initCompany(234)
+
+      },
+      reduce:function(){
+         this.$store.commit('decrement')
+
+      }
+  },
   created(){},
   mounted(){}
 }
 </script>
 <style lang="less" scoped>
-.wrapper{}
+.wrapper{
+  padding-left: 100px
+}
 </style>

@@ -1,34 +1,24 @@
 
-// const  store ={
-//     namespaced: true,
-//     state: {
-//         companyList: "1"
-//     },
-//     mutations: {
-//         initCompany(state, data){
-//             state.companyList=data
-//         }
-//     },
-//     actions: {
-//         commit('initCompany', '3')   
-//     }
-// }
-
-// export default store
-
-// let store = {
-//     state: {
-//         count: 1
-//     },
-//   }
-// export default store
-
-
-
 const  store ={
-    
+    namespaced: true,
     state: {
-        count: 1
+        count: 1,
+        date:"yu"
     },
-   
+    mutations: {
+        initCompany(state, data){
+            state.count=data
+        }
+    },
+    actions: {
+        initCompany({commit}, value){
+            console.log(value)
+            commit('initCompany', value)
+            
+        }
+        
+    }
 }
+
+export default store
+
