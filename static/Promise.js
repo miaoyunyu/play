@@ -1,21 +1,21 @@
+// 注 new Promise 必须首字母大写才是Promise
+// Promise.resolve 成功
 
-// promise.resolve 成功
+// Promise.reject  失败
 
-// promise.reject  失败
+// Promise.race 多个任务执行返回结果
 
-// promise.race 多个任务执行返回结果
-
-// promise.all 多任务同时执行，全成功返回数组，有失败，只返回失败
+// Promise.all 多任务同时执行，全成功返回数组，有失败，只返回失败
 
 //天生自带的方法
 
-// promise.prototype.then
+// Promise.prototype.then
 
 // onFulfilled 是用来接收promise成功的值
 // onRejected 是用来接收promise失败的原因
-//promise.then(onFulfilled, onRejected);
+//Promise.then(onFulfilled, onRejected);
 
-// promise.prototype.catch
+// Promise.prototype.catch
 
 
 //都是函数所有执行的也是函数
