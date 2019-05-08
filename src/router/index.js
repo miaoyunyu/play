@@ -5,7 +5,7 @@ import GanttIndex from '../components/GanttIndex.vue';
 import servoffice from '../components/servoffice/servoffice.vue'
 import promise from '../components/promise.vue'
 import vuexIndex from '../components/vuexIndex.vue'
-
+import vuex from '../components/vuex.vue'
 
 Vue.use(Router);
 
@@ -35,6 +35,10 @@ export default new Router({
     {
       path:'/vuexIndex',
       component:vuexIndex
+    },
+    {
+      path:'/vuex',
+      component:vuex
     }
    
    

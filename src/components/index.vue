@@ -4,6 +4,7 @@
       <li><router-link to="/servoffice">servoffice</router-link></li>
       <li><router-link to="/promise">promise</router-link></li>
       <li><router-link to="/vuexIndex">vuex</router-link></li>
+      <li><router-link to="/vuex">vuex从新练习</router-link></li>
   </div>
 </template>
 

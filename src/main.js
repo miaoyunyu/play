@@ -4,14 +4,17 @@ import router from './router/index.js'
 import store from './store/index.js'
 
 
-// import state from './store/modules/state.js'
-// import * as mutation from './store/modules/mutation.js'
+
+
 
 // import Vuex from 'vuex'
 //   Vue.use(Vuex)
 
 //   const store=new Vuex.Store({
-//     state,
+//     state: {
+//       count: 1,
+//       name:"yu"
+//     },
 //     mutations: {
 //       increment (state) {
 //         state.count++
@@ -76,19 +79,28 @@ new Vue({
 
 //单页引vuex的方法
 
-// import state from './store/modules/state.js'
-
 // import Vuex from 'vuex'
 //   Vue.use(Vuex)
 
 //   const store=new Vuex.Store({
-//     state
+//     state: {
+//       count: 1,
+//       date:"yu"
+//     },
+//     mutations: {
+//       increment (state) {
+//         state.count++
+//       },
+//       decrement (state){
+//         state.count--
+//       }
+//     }
 //   })
 // export default store
-//state.js
-// let state = {
-//   count: 1
-// }
-// export default state
 
 
+// new Vue({
+ 
+//   store,
+//   render: h => h(App),
+// }).$mount('#app')

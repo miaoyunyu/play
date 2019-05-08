@@ -4,11 +4,25 @@
       <button @click="add">-</button>
         {{count}}{{date}}
       <button @click="reduce">+</button>
+
+      <br/>mutation的另一种用法：  <button @click='mutationClick'> mutation</button>
+       <br/>测试dispatch：  <button @click='initClick'> mutation</button>
+
+      {{test}}
+      
+        <ul>
+          <li v-for="todo in todos">
+            {{ todo.text }}
+            {{ todo.done }}
+           </li>
+        </ul>
+        
+      <!-- <button @click=''>测试mapstate</button> -->
   </div>
 </template>
 
 <script>
-import { mapState, mapActions} from 'vuex'
+import { mapState, mapActions,mapGetters } from 'vuex'
 
 export default {
   components:{},
@@ -19,26 +33,51 @@ export default {
   },
   watch:{},
   computed:{
-      ...mapState('company', ['count','date']),
+      ...mapState('company', ['count','date','todos']),
+      ...mapGetters('company',['doneTodos',]),
+      test:function(){
+         let aa={
+           a:'自己',
+            ...mapState('company', ['count','date']),
+         }
+         console.log(aa)
+      },
+     
+    
+      
+
   },
   methods:{
-      ...mapActions("company", ["initCompany"]),
-      add:function(){
-          
-         this.initCompany(234)
+      ...mapActions("company", ["initCompany",'decrement','increment','init']),
 
+      add:function(){  
+         this.initCompany(234)
       },
       reduce:function(){
-         this.$store.commit('decrement')
-
+        this.decrement();
+        // this.$store.commit('decrement')
+      },
+      mutationClick:function(){
+        this.increment()
+      },
+      initClick:function(){
+        this.init(123);
       }
+      
+    
   },
-  created(){},
-  mounted(){}
+  created(){
+
+    
+
+  },
+  mounted(){
+    
+  }
 }
 </script>
 <style lang="less" scoped>
 .wrapper{
-  padding-left: 100px
+  padding: 100px
 }
 </style>
