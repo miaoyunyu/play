@@ -11,7 +11,7 @@
       {{test}}
       
         <ul>
-          <li v-for="todo in todos">
+          <li v-for="todo in doneTodos">
             {{ todo.text }}
             {{ todo.done }}
            </li>
