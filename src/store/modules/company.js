@@ -57,7 +57,7 @@ const  store ={
          },
          init({dispatch,commit}, data) {
             return new Promise((resolve, reject) => {  
-                      let aa='commit456'            
+                    let aa='commit456'            
                     dispatch('initGroup', data)
                     commit('initTask', aa)
                     resolve()
