@@ -164,6 +164,7 @@
                      this.memberList=this.memberList.filter((item,index,self) =>{ 
                          console.log(index)
                          return item.userName.includes(newValue) })
+                     this.memberList=this.memberList.filter((item,index,self) =>{ return  item.userName.includes(newValue) })
                     }else{
                         this.createMemberList();
                     }    
@@ -174,7 +175,6 @@
             computedList(){
                 if(this.search){
                         return this.list.filter((item,index,self) =>{ return item.userName.includes(this.search) })
-
                 }else{
                    return this.creatList();
                 }
