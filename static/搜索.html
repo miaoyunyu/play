@@ -1,6 +1,8 @@
 <!DOCTYPE html>
+
 <html>
 <head>
+    <meta charset="UTF-8">
     <title></title>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/vue/2.1.3/vue.js"></script>
 </head>
@@ -14,6 +16,14 @@
         </li>
     </ul>
 
+    <input v-model="search"  >
+    <ul>
+        <li v-for ='item  in computedList' >
+                {{item.userName}}
+        </li>
+    </ul>
+
+
 
 
 </div>
@@ -23,6 +33,8 @@
     var app = new Vue({
         el: '#demo',
         data: {
+            search:'',
+            list:"",
             findMember: '',
             memberList:[
                     {
@@ -70,7 +82,7 @@
                                 },
                                 {
                                     "userId": "423a9345e2474809a1579e6e7e332d61",
-                                    "userName": "获取",
+                                    "userName": "活",
                                     "accountName": "15046109313",
                                     "deleteStatus": 0,
                                     "locked": 0,
@@ -83,7 +95,7 @@
                                 },
                                 {
                                     "userId": "423a9345e2474809a1579e6e7e332d62",
-                                    "userName": "获取",
+                                    "userName": "获取11",
                                     "accountName": "15046109313",
                                     "deleteStatus": 0,
                                     "locked": 0,
@@ -97,18 +109,78 @@
                             ]
                             this.memberList=data                   
                 },
+                creatList(){
+
+                    data=[ {
+                                    "userId": "423a9345e2474809a1579e6e7e332d61",
+                                    "userName": "m",
+                                    "accountName": "15046109313",
+                                    "deleteStatus": 0,
+                                    "locked": 0,
+                                    "creatorName": "15046109313",
+                                    "createTime": "2019-05-14T06:33:18.000+0000",
+                                    "updateTime": "2019-05-14T06:33:18.000+0000",
+                                    "image": "upload/avatar/1557815597830.jpg",
+                                    "defaultImage": "upload/avatar/1557815597830.jpg",
+                                    "sex": 0
+                                },
+                                {
+                                    "userId": "423a9345e2474809a1579e6e7e332d61",
+                                    "userName": "活",
+                                    "accountName": "15046109313",
+                                    "deleteStatus": 0,
+                                    "locked": 0,
+                                    "creatorName": "15046109313",
+                                    "createTime": "2019-05-14T06:33:18.000+0000",
+                                    "updateTime": "2019-05-14T06:33:18.000+0000",
+                                    "image": "upload/avatar/1557815597830.jpg",
+                                    "defaultImage": "upload/avatar/1557815597830.jpg",
+                                    "sex": 0
+                                },
+                                {
+                                    "userId": "423a9345e2474809a1579e6e7e332d62",
+                                    "userName": "获取11",
+                                    "accountName": "15046109313",
+                                    "deleteStatus": 0,
+                                    "locked": 0,
+                                    "creatorName": "15046109313",
+                                    "createTime": "2019-05-14T06:33:18.000+0000",
+                                    "updateTime": "2019-05-14T06:33:18.000+0000",
+                                    "image": "upload/avatar/1557815597830.jpg",
+                                    "defaultImage": "upload/avatar/1557815597830.jpg",
+                                    "sex": 0
+                                }
+                            ]
+
+                            this.list=data 
+                            return this.list
+
+                }
            
         },
         watch:{
             findMember(newValue,oldValue){
                     if(newValue!=''){
-                    this.memberList=this.memberList.filter((item,index,self) =>{ return item.userName==newValue  })
+                     this.memberList=this.memberList.filter((item,index,self) =>{ 
+                         console.log(index)
+                         return item.userName.includes(newValue) })
                     }else{
                         this.createMemberList();
                     }    
              }
         },
         computed: {
+
+            computedList(){
+                if(this.search){
+                        return this.list.filter((item,index,self) =>{ return item.userName.includes(this.search) })
+
+                }else{
+                   return this.creatList();
+                }
+            }
+
+
           
         },
         created(){
