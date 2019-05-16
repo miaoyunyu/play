@@ -5,9 +5,7 @@
             "id": 1,
             "publicId": "84c59e3c15414c2c8f40aed923fb457e",
             "text": "本地的项目",
-            "type": "gantt.config.types.project",
-            "start_date": 1556505636000,
-            "end_date": 1556505636000
+            "type": "gantt.config.types.project"          
         },
      
         {

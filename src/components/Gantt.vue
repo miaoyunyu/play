@@ -132,19 +132,42 @@ export default {
                     gantt.parse(this.tasks);
                   })          
     },
+    chandata:function(data){
+        if(data){
+          return new Date(data)
+        }else{
+          return new Date()
+        }
+
+    },
+
 
     //获取本地数据
     getDataLocality:function() {
-
-
-       
-
-
-       axios.get('http://localhost:8080/data/gantt.json').then((res) => {
-                  
+       axios.get('http://localhost:8080/data/gantt.json').then((res) => {                
                     return res.data;
                   }).then((data) => {
-                    console.log(data)
+                    // console.log(data)
+                    // let list=data.data
+                    // let listData=[];
+                    // list.forEach(item => {
+                    //       let cur={
+                    //                 id: item.id,
+                    //                 publicId:item.publicId,
+                    //                 text: item.text,
+                    //                 user: item.user,
+                    //                 type: item.type,
+                    //                 start_date: item.start_date ? new Date(item.start_date):new Date(),
+                    //                 end_date: item.end_date ? new Date(item.end_date+(24*60*60*1000-1000)):new Date() ,
+                    //                 parent:item.parent,
+                    //                 open:item.open ,       
+                    //                 progress:0               
+                    //             }
+                    //      listData.push(cur)
+                    // });
+
+                    //  this.tasks.data = listData
+                    //  gantt.parse(this.tasks);
                     
                     let listData=[]
                     listData= data.data.map(item=>{
@@ -154,8 +177,8 @@ export default {
                                 text: item.text,
                                 user: item.user,
                                 type: item.type,
-                                start_date: new Date(item.start_date),
-                                end_date: new Date(item.end_date+(24*60*60*1000-1000)),
+                                start_date: item.start_date ? new Date(item.start_date):new Date(),
+                                end_date: item.end_date ? new Date(item.end_date+(24*60*60*1000-1000)):new Date(),
                                 parent:item.parent,
                                 open:item.open ,       
                                 progress:0               
@@ -163,7 +186,7 @@ export default {
                             return cur;
                     })
                   this.tasks.data = listData
-                  gantt.parse(this.tasks);
+                 gantt.parse(this.tasks);
             })
     }
 
@@ -184,4 +207,7 @@ export default {
 
 <style>
   @import "~dhtmlx-gantt/codebase/dhtmlxgantt.css";
+  .gantt_task_line {
+      border-radius: 30px !important;
+  }
 </style>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/vue/2.1.3/vue.js"></script>
+</head>
+<body>
+
+<div id="demo">
+    <input v-model="findMember"  >
+    <ul>
+        <li v-for ='item  in memberList' >
+                {{item.userName}}
+        </li>
+    </ul>
+
+
+
+</div>
+
+<script type="text/javascript">
+
+    var app = new Vue({
+        el: '#demo',
+        data: {
+            findMember: '',
+            memberList:[
+                    {
+                        "userId": "423a9345e2474809a1579e6e7e332d61",
+                        "userName": "m",
+                        "accountName": "15046109313",
+                        "deleteStatus": 0,
+                        "locked": 0,
+                        "creatorName": "15046109313",
+                        "createTime": "2019-05-14T06:33:18.000+0000",
+                        "updateTime": "2019-05-14T06:33:18.000+0000",
+                        "image": "upload/avatar/1557815597830.jpg",
+                        "defaultImage": "upload/avatar/1557815597830.jpg",
+                        "sex": 0
+                    },
+                    {
+                        "userId": "423a9345e2474809a1579e6e7e332d62",
+                        "userName": "可以",
+                        "accountName": "15046109313",
+                        "deleteStatus": 0,
+                        "locked": 0,
+                        "creatorName": "15046109313",
+                        "createTime": "2019-05-14T06:33:18.000+0000",
+                        "updateTime": "2019-05-14T06:33:18.000+0000",
+                        "image": "upload/avatar/1557815597830.jpg",
+                        "defaultImage": "upload/avatar/1557815597830.jpg",
+                        "sex": 0
+                    }
+                ]
+        },
+        methods: {
+            createMemberList(){
+                        data=[ {
+                                    "userId": "423a9345e2474809a1579e6e7e332d61",
+                                    "userName": "m",
+                                    "accountName": "15046109313",
+                                    "deleteStatus": 0,
+                                    "locked": 0,
+                                    "creatorName": "15046109313",
+                                    "createTime": "2019-05-14T06:33:18.000+0000",
+                                    "updateTime": "2019-05-14T06:33:18.000+0000",
+                                    "image": "upload/avatar/1557815597830.jpg",
+                                    "defaultImage": "upload/avatar/1557815597830.jpg",
+                                    "sex": 0
+                                },
+                                {
+                                    "userId": "423a9345e2474809a1579e6e7e332d61",
+                                    "userName": "获取",
+                                    "accountName": "15046109313",
+                                    "deleteStatus": 0,
+                                    "locked": 0,
+                                    "creatorName": "15046109313",
+                                    "createTime": "2019-05-14T06:33:18.000+0000",
+                                    "updateTime": "2019-05-14T06:33:18.000+0000",
+                                    "image": "upload/avatar/1557815597830.jpg",
+                                    "defaultImage": "upload/avatar/1557815597830.jpg",
+                                    "sex": 0
+                                },
+                                {
+                                    "userId": "423a9345e2474809a1579e6e7e332d62",
+                                    "userName": "获取",
+                                    "accountName": "15046109313",
+                                    "deleteStatus": 0,
+                                    "locked": 0,
+                                    "creatorName": "15046109313",
+                                    "createTime": "2019-05-14T06:33:18.000+0000",
+                                    "updateTime": "2019-05-14T06:33:18.000+0000",
+                                    "image": "upload/avatar/1557815597830.jpg",
+                                    "defaultImage": "upload/avatar/1557815597830.jpg",
+                                    "sex": 0
+                                }
+                            ]
+                            this.memberList=data                   
+                },
+           
+        },
+        watch:{
+            findMember(newValue,oldValue){
+                    if(newValue!=''){
+                    this.memberList=this.memberList.filter((item,index,self) =>{ return item.userName==newValue  })
+                    }else{
+                        this.createMemberList();
+                    }    
+             }
+        },
+        computed: {
+          
+        },
+        created(){
+            this.createMemberList();
+        }
+    })
+</script>
+</body>
+
